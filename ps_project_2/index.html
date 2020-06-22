@@ -1,56 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login Form</title>
-    <link rel="stylesheet" type="text/css" href="CSS/global.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+	<title>Login Form</title>
+	<link rel="stylesheet" type="text/css" href="CSS/global.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("form").submit(function(e){
+				$.get("https://api.lyrics.ovh/v1/toto/africa", function(data, status){
+					console.log("Data: " + data + "\nStatus: " + status);
+				});
+				// alert("Submitted!");
+				e.preventDefault();
+			});
+		});
+	</script>
 
 </head>
 <body>
 
-<div class="container">
-    <div class="wrap">
-        <div class="login">
-            <form class="login-form">
-                        <span class="span-1">
-                            Enter name of channel
-                        </span>
+	<div class="container">
+		<div class="wrap">
+			<div class="login">
+				<form class="login-form" action="">
+					<span class="span-1">
+						Enter name of channel
+					</span>
 
-                <div class="input">
-                    <input class="input-2" type="text" name="name" placeholder="Channel Name">
-                    <span class="span-2"></span>
-                    <span class="symbol">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                            </span>
-                </div>
-
-
-                <div class="wrap-form-btn">
-                    <button class="login-form-btn" onclick="check(this.form)")>
-                        Create Channel
-                    </button>
-                </div>
+					<div class="input">
+						<input class="input-2" type="text" name="name" placeholder="Channel Name">
+						<span class="span-2"></span>
+						<span class="symbol">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
 
 
-            </form>
-            <script language="javascript">
-                        function check(form)
-                        {$.ajax({
-                                        type: "GET",
-                                        url: "http://localhost:8080?name="+form.name.value,
-                                        success: success,
-                                        dataType: dataType
-                                    });
+					<div class="wrap-form-btn">
+						<button class="login-form-btn" type="submit">
+							Create Channel
+						</button>
+					</div>
 
 
-                        alert( "success " );
+				</form>
+				<script language="javascript">
+					function check(form)
+					{$.ajax({
+						type: "GET",
+						url: "http://localhost:8080?name="+form.name.value,
+						success: success,
+						dataType: dataType
+					});
 
-                        }
 
-                    </script>
+					alert( "success " );
 
-        </div>
-    </div>
+				}
+
+			</script>
+
+		</div>
+	</div>
 </div>
 
 </body>
