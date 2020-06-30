@@ -1,1 +1,10 @@
 # creating-channel-on-blockchain
+-clone this directory
+- open terminal in this directory 
+- make sure .sh file in this directory has excutable permission given if not "chmod +x ./<filename>"
+- run : "go run main.go"
+- website should be hosted on localhost:8080
+- make sure you have the fabric-samples cloned
+- cd into that directory
+- run the command: "./network.sh up"
+- website ready to use.
